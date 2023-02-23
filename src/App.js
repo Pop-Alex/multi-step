@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import Card from './comp/Card';
+import MultiForm from './hooks/MultiForm'
 
 function App() {
+  const {
+  currentIndex,
+  goFoward,
+  goBack,
+  isFirstStep,
+  isLastStep, } = MultiForm([])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {currentIndex === 0 && <Card></Card>}
+      {!isFirstStep && (<button onClick={goBack}>Go Back</button>)}
+      <button onClick={goFoward}>{isLastStep ? "Confirm":"Next Step"}</button>
     </div>
   );
 }
